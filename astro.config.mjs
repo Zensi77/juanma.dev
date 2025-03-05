@@ -7,12 +7,13 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://juanma.dev.github.io',
+  site: 'https://zensi77.github.io',
   base: 'juanma.dev',
-  output: 'static',
   vite: {
     plugins: [tailwindcss()],
   },
-
   integrations: [react()],
+  build: {
+    assetsPrefix: 'https://zensi77.github.io/juanma.dev/',
+  },
 });
