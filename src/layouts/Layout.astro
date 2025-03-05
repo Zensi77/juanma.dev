@@ -1,22 +1,53 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css';
+---
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<!doctype html>
+<html lang='es'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta
+      name='viewport'
+      content='width=device-width, initial-scale=1.0'
+    />
+    <title>Juanma.dev</title>
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href='/favicon.svg'
+    />
+  </head>
+  <body class='relative w-full bg-black'>
+    <!-- Fondo con gradientes -->
+    <div
+      class='absolute inset-0 h-full w-full bg-gradient-to-br from-white/40 to-white/10 backdrop-blur-xl z-0'
+    >
+      <div
+        class='absolute inset-0 bg-[radial-gradient(circle_500px_at_-30%_100%,#7dd3fc40,transparent)]'
+      >
+      </div>
+      <div
+        class='absolute inset-0 bg-[radial-gradient(circle_500px_at_130%_-30%,#818cf840,transparent)]'
+      >
+      </div>
+      <div
+        class='absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px]'
+      >
+      </div>
+    </div>
+
+    <style>
+      * {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+
+    <!-- Contenido de la página -->
+    <main class='relative flex z-10 h-full min-h-screen'>
+      <slot />
+    </main>
+  </body>
+</html>

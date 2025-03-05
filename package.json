@@ -9,6 +9,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.4.2"
+    "@astrojs/react": "^4.2.1",
+    "@tailwindcss/vite": "^4.0.9",
+    "@tsparticles/slim": "^3.8.1",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "astro": "^5.4.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "tailwindcss": "^4.0.9",
+    "typewriter-effect": "^2.21.0"
   }
 }
