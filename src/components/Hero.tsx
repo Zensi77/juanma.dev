@@ -7,10 +7,10 @@ const Hero = () => {
       id='inicio'
       className='relative w-full'
     >
-      <div className='relative flex gap-24 z-10 px-4 w-full'>
+      <div className='relative flex gap-24 z-10 px-12 m-12 w-full'>
         <img
           src={Avatar}
-          className='m-auto w-1/2 h-1/2 rounded-full shadow-lg mb-4'
+          className='m-auto w-1/2 h-1/2 rounded-full shadow-lg mb-4 p-3 bg-gray-500'
           alt='Avatar'
         />
         <div>

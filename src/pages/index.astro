@@ -3,7 +3,7 @@ import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero';
 import Layout from '../layouts/Layout.astro';
 import About from '../components/About.astro';
-import Technologies from '../components/Technologies.astro';
+import Technologies from '../components/Technologies';
 ---
 
 <Layout>
@@ -13,7 +13,7 @@ import Technologies from '../components/Technologies.astro';
   >
     <Hero client:only='react' />
     <About />
-    <Technologies />
+    <Technologies client:only />
     <!-- <Projects />
     <Contact />  -->
   </main>
