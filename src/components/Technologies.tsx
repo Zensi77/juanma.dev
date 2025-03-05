@@ -36,7 +36,10 @@ const CircularTechDisplay: React.FC = () => {
   const center = containerSize / 2;
 
   return (
-    <section className='flex space-around mt-12 gap-28 items-center'>
+    <section
+      className='flex space-around mt-24 gap-28 items-center'
+      id='tecnologias'
+    >
       <h2 className='text-3xl font-bold bg-gradient-to-r from-indigo-700 via-purple-500 to-pink-500 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-move'>
         Stack Tecnológico
       </h2>
