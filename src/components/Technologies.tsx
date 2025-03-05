@@ -14,7 +14,7 @@ const techItems = [
   { name: 'MongoDB', icon: 'devicon-mongodb-plain colored' },
   { name: 'PostgreSQL', icon: 'devicon-postgresql-plain colored' },
   { name: 'FastAPI', icon: 'devicon-fastapi-plain colored' },
-  { name: 'Express', icon: 'devicon-express-original colored' },
+  { name: 'Express', icon: 'devicon-express-original' },
   { name: 'Angular', icon: 'devicon-angularjs-plain colored' },
   { name: 'Node.js', icon: 'devicon-nodejs-plain colored' },
   { name: 'Laravel', icon: 'devicon-laravel-plain colored' },
@@ -54,7 +54,7 @@ const CircularTechDisplay: React.FC = () => {
               data-tooltip-id={tech.name}
             >
               <i
-                className={`${tech.icon} text-4xl shadow-lg p-2 bg-gray-800 rounded-full`}
+                className={`${tech.icon} text-4xl shadow-lg p-2 bg-gray-700 rounded-full`}
               ></i>
               <Tooltip
                 className='bg-gray-800 text-white p-2 rounded-lg z-10'
