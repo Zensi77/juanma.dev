@@ -15,6 +15,7 @@
     "@tsparticles/slim": "^3.8.1",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "aos": "^2.3.4",
     "astro": "^5.4.2",
     "emailjs-com": "^3.2.0",
     "motion": "^12.4.10",
@@ -25,6 +26,7 @@
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "gh-pages": "^6.3.0"
   }
 }

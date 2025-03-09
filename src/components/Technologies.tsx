@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 
@@ -17,8 +17,8 @@ const techItems = [
   { name: 'Express', icon: 'devicon-express-original' },
   { name: 'Angular', icon: 'devicon-angularjs-plain colored' },
   { name: 'Node.js', icon: 'devicon-nodejs-plain colored' },
-  { name: 'Laravel', icon: 'devicon-laravel-plain colored' },
-  { name: 'Spring Boot', icon: 'devicon-spring-plain colored' },
+  // { name: 'Laravel', icon: 'devicon-laravel-plain colored' },
+  // { name: 'Spring Boot', icon: 'devicon-spring-plain colored' },
   { name: 'Tailwind CSS', icon: 'devicon-tailwindcss-plain colored' },
   { name: 'Bootstrap', icon: 'devicon-bootstrap-plain colored' },
   { name: 'Git', icon: 'devicon-git-plain colored' },
@@ -31,23 +31,39 @@ const techItems = [
 ];
 
 const CircularTechDisplay: React.FC = () => {
-  const radius = 220;
-  const containerSize = 400;
-  const center = containerSize / 2;
+  const [size, setSize] = useState(Math.min(window.innerWidth * 0.8, 400));
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSize(Math.min(window.innerWidth * 0.8, 400));
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const minRadius = 100; // Radio mínimo para evitar colisiones
+  const maxRadius = size / 2 - 30; // Ajusta el radio para evitar que se salga del contenedor
+  const radius = Math.max(minRadius, maxRadius);
 
   return (
     <section
-      className='flex space-around mt-24 gap-28 items-center'
+      className='flex flex-col items-center justify-center mt-24 px-4'
       id='tecnologias'
+      data-aos='fade-up'
     >
-      <h2 className='text-3xl font-bold bg-gradient-to-r from-indigo-700 via-purple-500 to-pink-500 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-move'>
+      <h2 className='text-3xl font-bold bg-gradient-to-r from-indigo-700 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient-move mb-8 text-center'>
         Stack Tecnológico
       </h2>
-      <div className='relative w-[400px] h-[400px] flex items-center justify-center'>
+      <div
+        className='relative flex items-center justify-center'
+        style={{ width: `${size}px`, height: `${size}px` }}
+      >
         {techItems.map((tech, index) => {
           const angle = (index / techItems.length) * (2 * Math.PI);
-          const x = center + radius * Math.cos(angle) - 20;
-          const y = center + radius * Math.sin(angle) - 20;
+          const iconSize = Math.max(24, size * 0.08); // Ajusta el tamaño del icono para evitar superposiciones
+          const x = size / 2 + radius * Math.cos(angle) - iconSize / 2;
+          const y = size / 2 + radius * Math.sin(angle) - iconSize / 2;
 
           return (
             <div
@@ -57,12 +73,15 @@ const CircularTechDisplay: React.FC = () => {
               data-tooltip-id={tech.name}
             >
               <i
-                className={`${tech.icon} text-4xl shadow-lg p-2 bg-gray-700 rounded-full`}
+                className={`${tech.icon} text-[clamp(1.5rem,3.5vw,2.5rem)] shadow-lg p-2 bg-gray-700 rounded-full hover:bg-gray-800 transition-colors duration-300`}
+                style={{ fontSize: `${iconSize}px` }}
               ></i>
               <Tooltip
-                className='bg-gray-800 text-white p-2 rounded-lg z-10'
+                className='bg-gray-800 text-white p-2 rounded-lg z-10 text-sm'
                 id={tech.name}
                 content={tech.name}
+                place='top'
+                delayShow={100}
               />
             </div>
           );

@@ -1,5 +1,7 @@
 ---
+import AOSInitializer from '../components/AOS-init';
 import '../styles/global.css';
+import '../global.s';
 ---
 
 <!doctype html>
@@ -20,6 +22,19 @@ import '../styles/global.css';
       rel='stylesheet'
       href='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css'
     />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src='https://www.googletagmanager.com/gtag/js?id=G-JR8RGGZXJY'
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag();
+    </script>
   </head>
   <body class='relative w-full bg-black'>
     <!-- Fondo con gradientes -->
@@ -51,6 +66,7 @@ import '../styles/global.css';
 
     <!-- Contenido de la página -->
     <main class='relative flex z-10 h-full min-h-screen'>
+      <AOSInitializer client:idle />
       <slot />
     </main>
   </body>
