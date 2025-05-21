@@ -1,8 +1,9 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import vercel from '@astrojs/vercel/serverless';
 
-import react from "@astrojs/react";
+import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,14 +11,19 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "@": "/src",
-        "@components": "/src/components",
+        '@': '/src',
+        '@components': '/src/components',
       },
     },
   },
-  output: "static",
+  output: 'server',
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   build: {
-    inlineStylesheets: "auto",
+    inlineStylesheets: 'auto',
   },
   server: {
     host: true,
