@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+import node from '../assets/certificates/node.jpg';
+import angular from '../assets/certificates/angular.jpg';
+
+interface Certification {
+  title: string;
+  date: string;
+  img: ImageMetadata;
+  link: string;
+  cheaps?: string[];
+}
+
+const certifications: Certification[] = [
+  {
+    title: 'Angular de 0 a Experto - DevTalles',
+    date: 'Diciembre 2024',
+    img: angular,
+    link: 'https://cursos.devtalles.com/certificates/ajdym3zitn',
+    cheaps: [
+      'Pipes',
+      'Directivas',
+      'RxJS',
+      'Angular Material',
+      'Lazy Loading',
+      'Guards',
+      'Reactive Forms',
+      'Resolvers',
+      'Angular v19 vs modules',
+    ],
+  },
+  {
+    title: 'Node.js de 0 a Experto - DevTalles',
+    date: 'Diciembre 2024',
+    img: node,
+    link: 'https://cursos.devtalles.com/certificates/cvmii0lmez',
+    cheaps: [
+      'Express.js',
+      'MongoDB y PostgreSQL',
+      'Arquitectura hexagonal',
+      'Mongoose',
+      'Socket.IO',
+      'Testing Jest',
+      'Deployment',
+    ],
+  },
+];
+---
+
+<section
+  id='certifications'
+  class='text-[var(--white)] w-full border-t border-[#ffffff10] py-24'
+  data-aos='fade-up'
+  data-aos-easing='ease-in-out'
+  data-aos-offset='-200'
+>
+  <h2 class='text-3xl font-bold text-[var(--white)]'>Certificaciones</h2>
+  <div
+    class='grid grid-cols-1 md:grid-cols-2 gap-4 items-center justify-center mt-4'
+  >
+    {
+      certifications.map((certification: Certification) => (
+        <div class='flex flex-col gap-2 items-center justify-center h-full mb-4 border border-[var(--white-icon-tr)] p-4 rounded-lg bg-[#1414149c] hover:bg-[var(--white-icon-tr)] transition duration-300 ease-in-out'>
+          <a
+            href={certification.link}
+            target='_blank'
+            class='text-lg text-[var(--white)] hover:text-[var(--white-icon)] transition duration-300 ease-in-out'
+          >
+            <Image
+              src={certification.img}
+              class='w-48 h-32'
+              alt={certification.title}
+            />
+          </a>
+          <p class='text-sm'>{certification.title}</p>
+          <p class='text-sm text-[var(--white-icon)]'>{certification.date}</p>
+
+          {certification.cheaps && (
+            <ul class='mt-2 text-sm flex flex-wrap gap-2'>
+              {certification.cheaps.map((cheap) => (
+                <li class='text-sm text-white bg-gray-600 rounded-full px-3 py-1 cursor-pointer hover:bg-gray-700 transition duration-300'>
+                  {cheap}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</section>

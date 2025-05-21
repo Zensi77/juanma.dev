@@ -1,0 +1,125 @@
+---
+const estudios = [
+  {
+    fecha: 'Septiembre 2023 - Junio 2025',
+    titulo: 'Técnico Superior en Desarrollo de Aplicaciones Web',
+    descripcion:
+      'Formación en tecnologías de desarrollo web, incluyendo HTML, CSS, JavaScript, Angular, Node.js, Express, MongoDB...',
+  },
+  {
+    fecha: '2018 - 2022',
+    titulo: 'Grado en Ingeniería Química',
+    descripcion:
+      'Realicé la transición de la Ingeniería Química a la Programación Web, aprovechando mi formación en pensamiento analítico y resolución de problemas para mejorar el desarrollo de aplicaciones web.',
+  },
+];
+
+const experienciaLaboral = [
+  {
+    fecha: 'Marzo 2025 - Junio 2025 (4 meses)',
+    puesto: 'Viewnext (IBM)',
+    descripcion: 'Desarrollador FullStack - Angular y Spring Boot.',
+    cheaps: [
+      'Angular',
+      'Spring Boot',
+      'MySQL',
+      'Infinispan',
+      'ArtemisMQ',
+      'ELK',
+      'Docker',
+      'Git',
+      'Kubernetes',
+    ],
+  },
+];
+---
+
+<section
+  id='experience'
+  class='grid grid-cols-1 xl:grid-cols-2 gap-12 items-start justify-center w-full border-t border-[#ffffff10] py-28'
+  data-aos='fade-up'
+  data-aos-easing='ease-in-out'
+>
+  <div class='rounded-3xl shadow-2xl p-12 bg-cristal w-full md:w-full'>
+    <h2
+      class='text-3xl font-bold mb-12 text-gray-900 dark:text-white text-center'
+    >
+      Educación
+    </h2>
+    <ol class='relative border-s border-gray-200 dark:border-gray-700'>
+      {
+        estudios.map((estudio) => (
+          <li class='mb-10 ms-4'>
+            <div class='absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700' />
+            <time class='mb-1 text-sm font-normal leading-none text-gray-400'>
+              {estudio.fecha}
+            </time>
+            <h3 class='text-lg font-semibold text-gray-900 dark:text-white'>
+              {estudio.titulo}
+            </h3>
+            <p class='mb-4 text-white font-normal'>
+              <span class='font-normal text-gray-500 dark:text-gray-400'>
+                {estudio.descripcion}
+              </span>
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+
+  <div class='rounded-3xl shadow-2xl p-12 w-full bg-cristal h-full'>
+    <h2
+      class='text-3xl font-bold mb-12 text-gray-900 dark:text-white text-center'
+    >
+      Experiencia Laboral
+    </h2>
+    <ol class='relative border-s border-gray-200 dark:border-gray-700'>
+      {
+        experienciaLaboral.map((experiencia) => (
+          <li class='mb-10 ms-6'>
+            <span class='absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900'>
+              <svg
+                class='w-2.5 h-2.5 text-blue-800 dark:text-blue-300'
+                aria-hidden='true'
+                xmlns='http://www.w3.org/2000/svg'
+                fill='currentColor'
+                viewBox='0 0 20 20'
+              >
+                <path d='M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z' />
+              </svg>
+            </span>
+            <time class='mb-2 text-sm font-normal leading-none text-gray-400'>
+              {experiencia.fecha}
+            </time>
+            <h3 class='text-lg font-semibold text-gray-900 dark:text-white'>
+              {experiencia.puesto}
+            </h3>
+            <p class='font-normal text-gray-500 dark:text-gray-400'>
+              {experiencia.descripcion}
+            </p>
+            {experiencia.cheaps && (
+              <ul class='mt-2 flex flex-wrap gap-3 p-2'>
+                {experiencia.cheaps.map((cheaps) => (
+                  <li class='text-sm text-white bg-gray-600 rounded-full px-3 py-1 cursor-pointer hover:bg-gray-700 transition duration-300'>
+                    {cheaps}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .bg-cristal {
+    background: rgba(45, 44, 46, 0.342);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: 1.5px solid rgba(209, 213, 219, 0.3);
+    overflow: hidden;
+  }
+</style>

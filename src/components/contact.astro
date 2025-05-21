@@ -1,0 +1,128 @@
+<section
+  id='contact'
+  class='w-full py-12 border-t border-[#ffffff10]'
+  data-aos='fade-up'
+  data-aos-easing='ease-in-out'
+>
+  <div class='max-w-5xl mx-auto'>
+    <h2 class='text-lg text-[var(--sec)] mb-2 shiny-sec'>Hablemos</h2>
+    <h3 class='text-4xl md:text-5xl font-medium text-[var(--white)] mb-6'>
+      Contacto
+    </h3>
+    <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
+      <div class='text-[var(--white-icon)]'>
+        <p class='mb-4'>
+          Tienes alguna pregunta o quieres hablar sobre un proyecto? No dudes en
+          contactarme.
+        </p>
+        <div class='flex items-center gap-2'>
+          <span>Ubicación:</span>
+          <span class='text-[var(--white)]'>Granada, España</span>
+        </div>
+      </div>
+
+      <div>
+        <form class='max-w-md mx-auto'>
+          <div class='relative z-0 w-full mb-5 group'>
+            <input
+              type='text'
+              name='nombre'
+              id='nombre'
+              class='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+              placeholder=' '
+              required
+            />
+            <label
+              for='nombre'
+              class='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+              >Nombre</label
+            >
+          </div>
+
+          <div class='relative z-0 w-full mb-5 group'>
+            <input
+              type='email'
+              name='email'
+              id='email'
+              class='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+              placeholder=' '
+              required
+            />
+            <label
+              for='email'
+              class='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+              >Correo Electronico</label
+            >
+          </div>
+          <div class='relative z-0 w-full mb-5 group'>
+            <input
+              type='tel'
+              pattern='[0-9]{9}'
+              name='telefono'
+              id='telefono'
+              class='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+              placeholder=' '
+            />
+            <label
+              for='telefono'
+              class='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+              >Numero de telefono</label
+            >
+          </div>
+          <div class='relative z-0 w-full mb-5 group'>
+            <label
+              for='message'
+              class='block mb-2 text-sm font-medium dark:text-white'
+              >Mensaje</label
+            >
+            <textarea
+              id='message'
+              name='message'
+              class='w-full border bg-[var(--background)] rounded-md p-2 text-white
+              focus:outline-none focus:ring-2'
+              rows='4'
+            ></textarea>
+          </div>
+
+          <button
+            type='submit'
+            class='text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800'
+            >Enviar</button
+          >
+        </form>
+        <div
+          id='form-message'
+          class='hidden justify-center items-center mt-4 text-[var(--white)] text-lg'
+        >
+          ✅ Gracias por tu mensaje, te respondere lo mas pronto posible!
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import emailjs from 'emailjs-com';
+
+  const sendEmail = async (event: SubmitEvent) => {
+    event.preventDefault(); // Previene el envío por defecto del formulario
+    emailjs.init('humXO3PnancHmps22');
+    const form = event.target as HTMLFormElement; // Accede al formulario
+
+    try {
+      const result = await emailjs.sendForm(
+        'service_4mmb6wi', // Reemplázalo con tu ID real
+        'template_hkfs4fb',
+        form,
+        'humXO3PnancHmps22'
+      );
+      document.querySelector('#form-message').classList.remove('hidden');
+      form.reset(); // Reinicia el formulario después de enviarlo
+    } catch (error) {
+      alert('Error al enviar el mensaje');
+      console.error(error);
+    }
+  };
+
+  document.forms[0].addEventListener('submit', sendEmail);
+</script>
