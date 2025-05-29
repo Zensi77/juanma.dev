@@ -13,7 +13,6 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^4.2.7",
     "@astrojs/tailwind": "^6.0.2",
-    "@astrojs/vercel": "^8.1.4",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "@vercel/analytics": "^1.5.0",
@@ -24,6 +23,7 @@
     "ogl": "^1.0.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-modal": "^3.16.3",
     "sharp": "^0.34.0"
   },
   "devDependencies": {

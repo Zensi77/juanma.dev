@@ -1,47 +1,81 @@
 ---
-import { Image } from 'astro:assets';
-import svgl from '../../public/svgl.png';
-import stockin from '../../public/stockin.png';
-import moviesfordevs from '../../public/moviesfordevs.png';
-import tron from '../../public/tron.png';
+import fastapi from '../../public/svg/fastapi.svg';
+import angular from '../../public/svg/angular.svg';
+import mysql from '../../public/svg/mysql.svg';
+import ProjectCard from './Project-Card.astro';
 
-interface Project {
+interface tecnologies {
   title: string;
   image: ImageMetadata;
-  link: string;
+}
+
+export interface Project {
+  title: string;
+  imagesFolder: string;
+  images: string[];
+  linkFront?: string;
+  linkBack?: string;
+  link?: string;
   preview: string;
-  status: string;
+  description: string;
+  tecnologies?: tecnologies[];
+  status?: string;
 }
 
 const projects: Project[] = [
   {
-    title: 'MoviesForDevs',
-    image: moviesfordevs as ImageMetadata,
-    link: 'https://github.com/gothsec/MoviesForDevs',
-    preview: 'https://movies-for-devs.vercel.app',
-    status: 'On Development',
+    title: 'Todo App',
+    imagesFolder: 'todo',
+    images: ['todo1.png', 'todo2.png', 'todo3.png', 'todo4.png', 'todo5.png'],
+    linkFront: 'https://github.com/Zensi77/notion-basic-frontend',
+    linkBack: 'https://github.com/Zensi77/notion-clone-backend',
+    preview: 'https://notion-basic-frontend.onrender.com/',
+    description: `Aplicación basica de gestión de tareas con autenticacion, registro y CRUD de tareas, realizada con Angular y Fast Api. \n
+    Características:
+    - Registro y autenticación de usuarios mediante JWT.
+    - Interfaz de usuario intuitiva y responsiva haciendo uso de Angular Material y TailwindCSS.
+    - Formularios dinámicos y seguros validados con Angular Reactive Forms y Async Validators.
+    - Implementación de rutas protegidas e implementacion Lazy Loading para mejorar el rendimiento.
+    - Modificacion del estado de las tareas mediante CDK de drag and drop.
+`,
+    tecnologies: [
+      {
+        title: 'FastAPI',
+        image: fastapi,
+      },
+      {
+        title: 'Angular',
+        image: angular,
+      },
+      {
+        title: 'MySQL',
+        image: mysql,
+      },
+    ],
   },
-  {
-    title: 'StockIn',
-    image: stockin as ImageMetadata,
-    link: 'https://github.com/gothsec/stockin-demo',
-    preview: 'https://stockin-demo.vercel.app',
-    status: 'On Development',
-  },
-  {
-    title: 'Svgl.app',
-    image: svgl as ImageMetadata,
-    link: 'https://github.com/pheralb/svgl',
-    preview: 'https://svgl.app',
-    status: 'Contributor',
-  },
-  {
-    title: 'Tron Legacy Web',
-    image: tron as ImageMetadata,
-    link: 'https://github.com/Gothsec/Tron-Legacy-web',
-    preview: 'https://tron-legacy-web.vercel.app/',
-    status: 'Template (not official)',
-  },
+  // {
+  //   title: 'E-commerce',
+  //   imagesFolder: 'ecommerce',
+  //   images: [],
+  //   linkFront: '',
+  //   linkBack: '',
+  //   preview: '',
+  //   description: `E-commerce de productos de tecnología realizado con Angular y Spring Boot. \n
+  //   Características:
+  //   - Registro y autenticación de usuarios mediante JWT.
+  //   - Interfaz de usuario intuitiva y responsiva haciendo uso de PrimeNG y TailwindCSS.
+  //   - Arquitectura hexagonal con patrones de diseño como Repository, Service y Controller.
+  //   - Uso de Lombok para reducir el boilerplate en las clases de modelo y DTO.
+  //   - Implementacion de mappers para la conversión de datos entre domain, entity y DTO.
+  //   - Spring Security para la gestión de la seguridad y autenticación.
+  //   - Uso de JPA e Hibernate para la persistencia de datos.
+  //   - Implementacion de cache distribuida con infinispan, haciendo uso de protostream para la serialización de objetos.
+  //   - Implementacion de cola de mensajes con ArtemisMQ para la gestión de eventos y notificaciones.
+  //   - Uso de Swagger para la documentación de la API.
+  //   - Implementacion de un consumidor de la cola de mensajes, mandando los eventos a Elasticsearch y creando los index patterns necesarios.
+  //   - Realizacion de graficos con Kibana para la visualización de los datos.
+  //   `,
+  // },
 ];
 ---
 
@@ -51,72 +85,17 @@ const projects: Project[] = [
   data-aos='fade-up'
   data-aos-easing='ease-in-out'
 >
-  <div class='max-w-5xl mx-auto'>
+  <div
+    class='max-w-5xl mx-auto'
+    id='root'
+  >
     <h2 class='text-lg text-[var(--sec)] mb-2 shiny-sec'>Mi trabajo</h2>
     <h3 class='text-4xl md:text-5xl font-medium mb-8'>Proyectos</h3>
 
     <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
-      {
-        projects.map((project) => (
-          <div class='group'>
-            <a
-              href={project.preview}
-              target='_blank'
-              rel='noopener noreferrer'
-              class='block'
-            >
-              <div class='rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4'>
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  class='w-full h-48 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300'
-                />
-              </div>
-              <div class='flex items-center px-3'>
-                <div class='flex-grow'>
-                  <h4 class='text-2xl font-semibold'>{project.title}</h4>
-                  <span class='py-1 text-sm text-[var(--white-icon)]'>
-                    {project.status}
-                  </span>
-                </div>
-                <div class='flex gap-2 ml-auto'>
-                  <a
-                    target='_blank'
-                    href={project.link}
-                    aria-label='GitHub'
-                    class='size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]'
-                  >
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      viewBox='0 0 24 24'
-                      fill='currentColor'
-                      class='size-7'
-                    >
-                      <path d='M24 12L18.3431 17.6569L16.9289 16.2426L21.1716 12L16.9289 7.75736L18.3431 6.34315L24 12ZM2.82843 12L7.07107 16.2426L5.65685 17.6569L0 12L5.65685 6.34315L7.07107 7.75736L2.82843 12ZM9.78845 21H7.66009L14.2116 3H16.3399L9.78845 21Z' />
-                    </svg>
-                  </a>
-                  <a
-                    target='_blank'
-                    href={project.preview}
-                    aria-label='Preview'
-                    class='size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]'
-                  >
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      viewBox='0 0 24 24'
-                      fill='currentColor'
-                      class='size-7'
-                    >
-                      <path d='M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z' />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </a>
-          </div>
-        ))
-      }
+      {projects.map((project) => <ProjectCard project={project as Project} />)}
     </div>
+
     <a
       target='_blank'
       href='https://github.com/zensi77?tab=repositories'
