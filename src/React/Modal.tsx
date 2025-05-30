@@ -108,7 +108,7 @@ export default function AnimatedModal({ project }) {
                   onClick={prevSlide}
                   className='absolute top-0 start-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none'
                 >
-                  <span className='inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none'>
+                  <span className='inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-800/60'>
                     <svg
                       className='w-4 h-4 text-white rtl:rotate-180'
                       aria-hidden='true'
@@ -130,9 +130,9 @@ export default function AnimatedModal({ project }) {
                 <button
                   type='button'
                   onClick={nextSlide}
-                  className='absolute top-0 end-5 flex items-center justify-center h-full  cursor-pointer group focus:outline-none'
+                  className='absolute top-0 end-5 flex items-center justify-center h-full cursor-pointer group focus:outline-none '
                 >
-                  <span className='inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none'>
+                  <span className='inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-800/60'>
                     <svg
                       className='w-4 h-4 text-white rtl:rotate-180'
                       aria-hidden='true'
@@ -148,7 +148,6 @@ export default function AnimatedModal({ project }) {
                         d='m1 9 4-4-4-4'
                       />
                     </svg>
-                    <span className='sr-only'></span>
                   </span>
                 </button>
               </>
