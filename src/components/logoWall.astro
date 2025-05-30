@@ -1,17 +1,17 @@
 ---
 const technologies = [
-  'spring Boot',
-  'angular',
-  'typeScript',
-  'tailwindcss',
-  'nodejs',
-  'HTML5',
-  'CSS3',
-  'git',
-  'mysql',
-  'docker',
-  'mongoDB',
-  'bash',
+  { image: 'springboot', name: 'Spring Boot' },
+  { image: 'angular', name: 'Angular' },
+  { image: 'typescript', name: 'TypeScript' },
+  { image: 'tailwindcss', name: 'Tailwind CSS' },
+  { image: 'nodejs', name: 'Node.js' },
+  { image: 'html5', name: 'HTML5' },
+  { image: 'css3', name: 'CSS3' },
+  { image: 'git', name: 'Git' },
+  { image: 'mysql', name: 'MySQL' },
+  { image: 'docker', name: 'Docker' },
+  { image: 'mongodb', name: 'MongoDB' },
+  { image: 'fastapi', name: 'FastAPI' },
 ];
 ---
 
@@ -30,15 +30,15 @@ const technologies = [
       [...technologies, ...technologies, ...technologies].map((tech) => (
         <div class='flex items-center gap-2 group transition-all duration-300'>
           <img
-            src={`/svg/${tech}.svg`}
-            alt={tech}
+            src={`/svg/${tech.image}.svg`}
+            alt={tech.image}
             class='h-7 w-auto object-contain transition-transform group-hover:scale-110 opacity-60'
             width='30'
             height='30'
             loading='lazy'
           />
           <span class='text-lg font-medium text-[var(--white-icon)]'>
-            {tech.charAt(0).toUpperCase() + tech.slice(1)}
+            {tech.name}
           </span>
         </div>
       ))
