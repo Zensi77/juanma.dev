@@ -2,7 +2,7 @@
 import fastapi from '../../public/svg/fastapi.svg';
 import angular from '../../public/svg/angular.svg';
 import mysql from '../../public/svg/mysql.svg';
-import ProjectCard from './Project-Card.astro';
+import ProjectCard from '@/components/Project-Card.astro';
 
 interface tecnologies {
   title: string;
@@ -62,19 +62,20 @@ const projects: Project[] = [
   //   preview: '',
   //   description: `E-commerce de productos de tecnología realizado con Angular y Spring Boot. \n
   //   Características:
-  //   - Registro y autenticación de usuarios mediante JWT.
-  //   - Interfaz de usuario intuitiva y responsiva haciendo uso de PrimeNG y TailwindCSS.
   //   - Arquitectura hexagonal con patrones de diseño como Repository, Service y Controller.
-  //   - Uso de Lombok para reducir el boilerplate en las clases de modelo y DTO.
   //   - Implementacion de mappers para la conversión de datos entre domain, entity y DTO.
-  //   - Spring Security para la gestión de la seguridad y autenticación.
-  //   - Uso de JPA e Hibernate para la persistencia de datos.
+  //   - Uso de Lombok para reducir el boilerplate en las clases de modelo y DTO.
   //   - Implementacion de cache distribuida con infinispan, haciendo uso de protostream para la serialización de objetos.
   //   - Implementacion de cola de mensajes con ArtemisMQ para la gestión de eventos y notificaciones.
-  //   - Uso de Swagger para la documentación de la API.
   //   - Implementacion de un consumidor de la cola de mensajes, mandando los eventos a Elasticsearch y creando los index patterns necesarios.
   //   - Realizacion de graficos con Kibana para la visualización de los datos.
-  //   `,
+  //   - Los datos usados son obtenidos mediante web scraping, de la web de Coolmod y PcBox, usando Selenium (Python)
+  //   - La informacion de los productos se envia a Ollma(llama3.2) para la generacion de descripciones.
+  //   - Interfaz de usuario intuitiva y responsiva haciendo uso de PrimeNG y TailwindCSS.
+  //   - Spring Security para la gestión de la seguridad y autenticación con JWT.
+  //   - Uso de JPA e Hibernate para la persistencia de datos.
+  //   - Uso de Swagger para la documentación de la API.
+  //
   // },
 ];
 ---
