@@ -82,7 +82,7 @@ export default function AnimatedModal({ project }) {
           </button>
 
           <div className='relative w-full mt-10'>
-            <div className='relative h-48 md:h-96 overflow-hidden rounded-lg'>
+            <div className='relative h-48 md:h-80 overflow-hidden rounded-xl bg-slate-700/60 backdrop-blur-md ring-1 ring-white/10 transform shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] transition-all duration-500'>
               {project.images.map((image, index) => (
                 <div
                   key={image}
@@ -154,7 +154,7 @@ export default function AnimatedModal({ project }) {
             )}
           </div>
           {project.description && (
-            <div className=' text-white'>
+            <div className=' text-white mt-4'>
               <p className='whitespace-pre-line'>{project.description}</p>
             </div>
           )}
