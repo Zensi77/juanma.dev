@@ -21,6 +21,7 @@ const DescriptionTextAnimation = () => {
           autoAlpha: 0,
           filter: 'blur(10px)',
           ease: 'power2.out',
+          delay: 0.5,
         });
 
         return () => {
@@ -28,14 +29,6 @@ const DescriptionTextAnimation = () => {
         };
       } catch (error) {
         console.error('Error al cargar SplitText:', error);
-
-        gsap.from(textRef.current, {
-          duration: 0.5,
-          opacity: 0,
-
-          y: 20,
-          ease: 'power2.out',
-        });
       }
     };
 

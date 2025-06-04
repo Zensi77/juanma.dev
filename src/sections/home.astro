@@ -89,6 +89,9 @@ import avatar from '../assets/avatar.png';
           </div>
         </div>
         <div
+          data-aos='fade-in'
+          data-aos-easing='ease-in-out'
+          data-aos-delay='400'
           class='flex flex-col gap-2 items-center lg:items-start text-[var(--white-icon)]'
         >
           <Image
@@ -96,7 +99,7 @@ import avatar from '../assets/avatar.png';
             class='rounded-full w-32 h-32 md:w-40 md:h-40 object-cover mx-auto'
             alt='Juanma Espinola avatar'
           />
-          <DescriptionTextAnimation client:idle />
+          <DescriptionTextAnimation client:only />
         </div>
       </div>
     </div>
@@ -141,22 +144,3 @@ import avatar from '../assets/avatar.png';
     }
   }
 </style>
-
-<script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js'
-></script>
-
-<script is:inline>
-  gsap.registerPlugin(SplitText);
-
-  const split = SplitText.create('#about', { type: 'words' });
-
-  gsap.from(split.words, {
-    duration: 0.5,
-    opacity: 0,
-    y: 20,
-    stagger: 0.1,
-    autoAlpha: 0, // Hace un efecto de desvanecimiento
-    filter: 'blur(10px)',
-    ease: 'power2.out',
-  });
-</script>
