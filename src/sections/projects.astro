@@ -2,6 +2,7 @@
 import fastapi from '../../public/svg/fastapi.svg';
 import angular from '../../public/svg/angular.svg';
 import mysql from '../../public/svg/mysql.svg';
+import springboot from '../../public/svg/springboot.svg';
 import ProjectCard from '@/components/Project-Card.astro';
 
 interface tecnologies {
@@ -18,7 +19,7 @@ export interface Project {
   link?: string;
   preview: string;
   description: string;
-  tecnologies?: tecnologies[];
+  tecnologies: tecnologies[];
   status?: string;
 }
 
@@ -53,30 +54,53 @@ const projects: Project[] = [
       },
     ],
   },
-  // {
-  //   title: 'E-commerce',
-  //   imagesFolder: 'ecommerce',
-  //   images: [],
-  //   linkFront: '',
-  //   linkBack: '',
-  //   preview: '',
-  //   description: `E-commerce de productos de tecnología realizado con Angular y Spring Boot. \n
-  //   Características:
-  //   - Arquitectura hexagonal con patrones de diseño como Repository, Service y Controller.
-  //   - Implementacion de mappers para la conversión de datos entre domain, entity y DTO.
-  //   - Uso de Lombok para reducir el boilerplate en las clases de modelo y DTO.
-  //   - Implementacion de cache distribuida con infinispan, haciendo uso de protostream para la serialización de objetos.
-  //   - Implementacion de cola de mensajes con ArtemisMQ para la gestión de eventos y notificaciones.
-  //   - Implementacion de un consumidor de la cola de mensajes, mandando los eventos a Elasticsearch y creando los index patterns necesarios.
-  //   - Realizacion de graficos con Kibana para la visualización de los datos.
-  //   - Los datos usados son obtenidos mediante web scraping, de la web de Coolmod y PcBox, usando Selenium (Python)
-  //   - La informacion de los productos se envia a Ollma(llama3.2) para la generacion de descripciones.
-  //   - Interfaz de usuario intuitiva y responsiva haciendo uso de PrimeNG y TailwindCSS.
-  //   - Spring Security para la gestión de la seguridad y autenticación con JWT.
-  //   - Uso de JPA e Hibernate para la persistencia de datos.
-  //   - Uso de Swagger para la documentación de la API.
-  //
-  // },
+  {
+    title: 'Tecno Shop',
+    imagesFolder: 'e-shop',
+    images: [
+      'shop-1.png',
+      'shop-2.png',
+      'shop-3.png',
+      'shop-4.png',
+      'shop-5.png',
+      'shop-6.png',
+      'shop-7.png',
+      'shop-8.png',
+    ],
+    linkFront: 'https://github.com/Zensi77/ecomerce-frontend',
+    linkBack: 'https://github.com/Zensi77/ecomerce-backend',
+    preview: 'https://ecomerce-frontend-sgxu.onrender.com',
+    description: `E-commerce de productos de tecnología realizado con Angular y Spring Boot. \n
+    Características:
+    - Arquitectura hexagonal con patrones de diseño como Repository, Service y Controller.
+    - Implementacion de mappers para la conversión de datos entre domain, entity y DTO.
+    - Uso de Lombok para reducir el boilerplate en las clases de modelo y DTO.
+    - Implementacion de cache distribuida con infinispan, haciendo uso de protostream para la serialización de objetos.
+    - Implementacion de cola de mensajes con ArtemisMQ para la gestión de eventos y notificaciones.
+    - Implementacion de un consumidor de la cola de mensajes, mandando los eventos a Elasticsearch y creando los index patterns necesarios.
+    - Realizacion de graficos con Kibana para la visualización de los datos.
+    - Los datos usados son obtenidos mediante web scraping, de la web de Coolmod y PcBox, usando la libreria de Selenium (Python)
+    - La informacion de los productos se envia a Ollama(llama3.2) para la generacion de descripciones de los productos.
+    - Interfaz de usuario intuitiva y responsiva haciendo uso de PrimeNG y TailwindCSS.
+    - Spring Security para la gestión de la seguridad y autenticación con JWT.
+    - Uso de JPA e Hibernate para la persistencia de datos.
+    - Uso de Swagger para la documentación de la API.
+  `,
+    tecnologies: [
+      {
+        title: 'Angular',
+        image: angular,
+      },
+      {
+        title: 'Spring Boot',
+        image: springboot,
+      },
+      {
+        title: 'MySQL',
+        image: mysql,
+      },
+    ],
+  },
 ];
 ---
 

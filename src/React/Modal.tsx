@@ -76,12 +76,12 @@ export default function AnimatedModal({ project }) {
         >
           <button
             onClick={closeModal}
-            className='text-red-500 border rounded-full px-4 py-2 fixed top-4 right-4 z-90 cursor-pointer hover:bg-red-500 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-500'
+            className='text-red-500 fixed top-4 right-4 z-90 cursor-pointer hover:scale-110 transition-transform duration-100'
           >
-            x
+            X
           </button>
 
-          <div className='relative w-full mt-10'>
+          <div className='relative w-full mt-6'>
             <div className='relative h-48 md:h-80 overflow-hidden rounded-xl bg-slate-700/60 backdrop-blur-md ring-1 ring-white/10 transform shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] transition-all duration-500'>
               {project.images.map((image, index) => (
                 <div
