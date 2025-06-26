@@ -57,7 +57,14 @@ export default function AnimatedModal({ project }) {
         onClick={() => {
           openModal();
         }}
+        className='relative w-full'
       >
+        {project.isInDevelopment === true && (
+          <div className=' flex gap-1 absolute top-2 right-2 bg-orange-500 text-white text-xs px-2 py-1 rounded z-10'>
+            <div className='p-1 h-1 w-1 my-auto rounded-full bg-red-700 pulse'></div>
+            En desarrollo
+          </div>
+        )}
         <img
           src={`./projects/${project.imagesFolder}/${project.images[0]}`}
           alt={project.title}
@@ -80,26 +87,30 @@ export default function AnimatedModal({ project }) {
           >
             X
           </button>
-
           <div className='relative w-full mt-6'>
-            <div className='relative h-48 md:h-80 overflow-hidden rounded-xl bg-slate-700/60 backdrop-blur-md ring-1 ring-white/10 transform shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] transition-all duration-500'>
-              {project.images.map((image, index) => (
-                <div
-                  key={image}
-                  className={`absolute w-full object-contain transition-opacity duration-300 ease-in-out ${
-                    index === currentSlide
-                      ? 'opacity-100'
-                      : 'opacity-0 pointer-events-none'
-                  }`}
-                >
-                  <img
-                    src={`./projects/${project.imagesFolder}/${image}`}
-                    alt={`Slide ${index + 1}`}
-                    className='object-contain w-full h-full rounded-lg'
-                  />
+            {!project.isInDevelopment && (
+              <>
+                {' '}
+                <div className='relative h-48 md:h-80 overflow-hidden rounded-xl bg-slate-700/60 backdrop-blur-md ring-1 ring-white/10 transform shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] transition-all duration-500'>
+                  {project.images.map((image, index) => (
+                    <div
+                      key={image}
+                      className={`absolute w-full object-contain transition-opacity duration-300 ease-in-out ${
+                        index === currentSlide
+                          ? 'opacity-100'
+                          : 'opacity-0 pointer-events-none'
+                      }`}
+                    >
+                      <img
+                        src={`./projects/${project.imagesFolder}/${image}`}
+                        alt={`Slide ${index + 1}`}
+                        className='object-contain w-full h-full rounded-lg'
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </>
+            )}
 
             {project.images.length > 1 && (
               <>

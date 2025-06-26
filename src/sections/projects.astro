@@ -3,6 +3,8 @@ import fastapi from '../../public/svg/fastapi.svg';
 import angular from '../../public/svg/angular.svg';
 import mysql from '../../public/svg/mysql.svg';
 import springboot from '../../public/svg/springboot.svg';
+import nestjs from '../../public/svg/nestjs.svg';
+import postgresql from '../../public/svg/postgresql.svg';
 import ProjectCard from '@/components/Project-Card.astro';
 
 interface tecnologies {
@@ -17,10 +19,10 @@ export interface Project {
   linkFront?: string;
   linkBack?: string;
   link?: string;
-  preview: string;
+  preview?: string;
   description: string;
   tecnologies: tecnologies[];
-  status?: string;
+  isInDevelopment?: boolean;
 }
 
 const projects: Project[] = [
@@ -41,12 +43,12 @@ const projects: Project[] = [
 `,
     tecnologies: [
       {
-        title: 'FastAPI',
-        image: fastapi,
-      },
-      {
         title: 'Angular',
         image: angular,
+      },
+      {
+        title: 'FastAPI',
+        image: fastapi,
       },
       {
         title: 'MySQL',
@@ -101,6 +103,45 @@ const projects: Project[] = [
       },
     ],
   },
+  {
+    title: 'Dev Match',
+    imagesFolder: 'dev-match',
+    images: ['logo.png'],
+    description: `DevMatch es una plataforma de colaboración diseñada para conectar desarrolladores con proyectos de código abierto y mentores técnicos, creando un entorno propicio para el aprendizaje práctico, la mejora continua de habilidades y la visibilidad profesional.
+    La finalidad es empoderar a los desarrolladores especialmente juniors para que puedan aportar en proyectos reales, ampliar su red de contactos y construir un portfolio profesional validado por la comunidad.
+    
+    🧩 Funcionalidades clave:
+    - Seguridad robusta mediante JWT con refresh tokens automáticos en segundo plano, revocación activa, sistema de roles, protección CSRF y XSS, y limitación de peticiones (Rate Limiting).
+    - Gestión avanzada de usuarios, perfiles, habilidades, experiencia y vinculación a proyectos colaborativos.
+    - Integración de IA generativa (Ollama con Llama3.2) para sugerencias personalizadas de proyectos, colaboradores o mentores.
+    - Roadmap de desarrollo gamificado con sistema de reputación y validación entre pares.
+    - Soporte a hackatones virtuales y colaboraciones patrocinadas por empresas/recruiters.
+    - Implementación de un sistema de notificaciones y chats privados en tiempo real mediante WebSockets.
+
+     🧪 Stack tecnológico:
+    - Frontend: Angular 19, TailwindCSS, Angular Material, GSAP (para microinteracciones), Angular Universal (SSR) y SSG para generación estática de vistas.
+    - Gestor de estado: NgRx Store, Data y Effects, con enfoque escalable tipo Redux.
+    - Backend: NestJS, PostgreSQL (vía TypeORM), MongoDB (vía Mongoose), Redis (para caché, sesiones y pub/sub), RabbitMQ (para colas y procesamiento asíncrono), CRON Jobs, Winston como logger estructurado.
+    - Tecnologias de monitorizacion: Grafana, Prometheus, Loki,
+    - Infraestructura preparada para contenerización (Docker), despliegue continuo (CI/CD), y despliegue en Kubernetes (escenario futuro).
+    - Todo el desarrollo de la aplicación se realiza siguiendo buenas practicas de desarrollo para asegurar el mantenimiento y escalabilidad del proyecto (Estructura de carpetas separadas por responsabilidades, linter...)
+    `,
+    isInDevelopment: true,
+    tecnologies: [
+      {
+        title: 'Angular',
+        image: angular,
+      },
+      {
+        title: 'NestJS',
+        image: nestjs,
+      },
+      {
+        title: 'PostgreSQL',
+        image: postgresql,
+      },
+    ],
+  },
 ];
 ---
 
@@ -118,7 +159,7 @@ const projects: Project[] = [
     <h3 class='text-4xl md:text-5xl font-medium mb-8'>Proyectos</h3>
 
     <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
-      {projects.map((project) => <ProjectCard project={project as Project} />)}
+      {projects.map((project: Project) => <ProjectCard project={project} />)}
     </div>
 
     <a
